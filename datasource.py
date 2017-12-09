@@ -21,7 +21,7 @@ def quadratic_function_generator(samples):
         yield x,y
         
 
-def test_generator():
+def test_generator(generator=quadratic_function_generator):
     X = []
     Y = []
     for x,y in quadratic_function_generator(1000):
@@ -31,7 +31,7 @@ def test_generator():
         
     
 
-def batch_sin_generator(batch_size,batch_num=None):
+def batch_generator(batch_size,batch_num=None):
     x_batch = np.empty(batch_size)
     y_batch = np.empty(batch_size)
     
@@ -43,7 +43,7 @@ def batch_sin_generator(batch_size,batch_num=None):
                 break
         batch_index += 1
         
-        for x,y in sin_function_generator(batch_size):
+        for x,y in quadratic_function_generator(batch_size):
             x_batch[index] = x
             y_batch[index] = y
             index += 1
